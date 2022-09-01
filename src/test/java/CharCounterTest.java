@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 public class CharCounterTest {
     private final CharCounter cc = new CharCounter();
+    private final Cache cache = new Cache();
 
     @Test
     public void shouldContainOnlyUniqueLetters() {
@@ -33,6 +34,6 @@ public class CharCounterTest {
         final String hello = "hello";
 
         cc.countOfUniqueCharacters(hello);
-        Assertions.assertTrue(cc.isLineSame(hello));
+        Assertions.assertTrue(cache.isLineSame(hello));
     }
 }

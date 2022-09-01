@@ -12,7 +12,7 @@ public class CharCounter {
         final Map<Character, Integer> countOfCharacters = new HashMap<>();
         int value;
 
-        if (cache.isLineSame(line)) {
+        if (cache.contains(line)) {
             return cache.getValue(line);
         }
 

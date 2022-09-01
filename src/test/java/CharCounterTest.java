@@ -2,16 +2,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class CharCounterTest {
-    private final CharCounter cc = new CharCounter();
     private final Cache cache = new Cache();
+    private final CharCounter cc = new CharCounter(cache);
 
     @Test
     public void shouldContainOnlyUniqueLetters() {
-        final Map<Character, Integer> expectedMap = new TreeMap<>();
+        final Map<Character, Integer> expectedMap = new HashMap<>();
         expectedMap.put('e', 1);
         expectedMap.put('h', 1);
         expectedMap.put('l', 2);
@@ -27,13 +27,5 @@ public class CharCounterTest {
         final String hello = "hello";
 
         cc.countOfUniqueCharacters(hello);
-    }
-
-    @Test
-    public void shouldCashResults() {
-        final String hello = "hello";
-
-        cc.countOfUniqueCharacters(hello);
-        Assertions.assertTrue(cache.isLineSame(hello));
     }
 }

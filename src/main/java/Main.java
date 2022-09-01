@@ -3,15 +3,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        final CharCounter cc = new CharCounter();
+        final Cache cache = new Cache();
+        final CharCounter cc = new CharCounter(cache);
         final Formatter formatter = new Formatter();
         final Scanner scanner = new Scanner(System.in);
+        String line;
 
         System.out.print("Введите строку: ");
 
-        final String line = scanner.nextLine();
-        final Map<Character, Integer> map = cc.countOfUniqueCharacters(line);
+        while (!(line = scanner.nextLine()).equalsIgnoreCase("exit")){
+            final Map<Character, Integer> map = cc.countOfUniqueCharacters(line);
 
-        formatter.format(line, map);
+            final String result = formatter.format(line, map);
+            System.out.println(result.trim());
+            System.out.print("Введите новую строку: ");
+        }
     }
 }
